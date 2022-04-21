@@ -73,8 +73,11 @@ function buy(id) {
         cartList.push(products[i]);
         console.log(cartList);
       }
+      num.innerHTML= cartList.length;
     }
 }
+const num= document.getElementById("count_product")
+
 
 // Exercise 2
 function cleanCart() {
@@ -85,6 +88,10 @@ function cleanCart() {
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
   
+  for(let i= 0; i < cartList.length; i++){
+    total += (cartList[i].price);
+  }
+  console.log(total);
 }
 
 // Exercise 4

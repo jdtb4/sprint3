@@ -90,8 +90,7 @@ const num= document.getElementById("count_product")
 
 // Exercise 2
 function cleanCart() {
-  cartList= [];
-  console.log(cartList);
+  cartList.length= 0;
 }
 
 // Exercise 3

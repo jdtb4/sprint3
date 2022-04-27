@@ -1,4 +1,15 @@
 // If you have time, you can move this variable "products" to a json file and load the data in this js. It will look more professional
+/*document.addEventListener("DOMContentLoaded", () => {
+  fetchData()
+})
+const fetchData= async() => {
+  try {
+    const res= await fetch('api.json')
+    const data= await res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}*/
 var products = [
   {
     id: 1,
@@ -66,10 +77,8 @@ var total = 0;
 // Exercise 1
 function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
-
     for(i= 0; i < products.length; i++){
-      if(id == products[i].id){
+      if(id === products[i].id){
         cartList.push(products[i]);
         console.log(cartList);
       }
@@ -81,7 +90,8 @@ const num= document.getElementById("count_product")
 
 // Exercise 2
 function cleanCart() {
-  cartList.length= 0;
+  cartList= [];
+  console.log(cartList);
 }
 
 // Exercise 3
@@ -98,6 +108,8 @@ function calculateTotal() {
 function generateCart() {
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+
 }
 
 // Exercise 5

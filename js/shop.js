@@ -80,10 +80,10 @@ function buy(id) {
     for(i= 0; i < products.length; i++){ // 1. Loop for to the array products to get the item to add to cart
       if(id == products[i].id){
         cartList.push(products[i]); // 2. Add found product to the cartList array
-        console.log(cartList);
       }
       num.innerHTML= cartList.length;
     }
+    console.log(cartList);
 }
 const num= document.getElementById("count_product")
 
@@ -109,24 +109,38 @@ function generateCart() {
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
   for(i= 0; i <cartList.length; i++){
-    let cartProduct = cart.indexOf(cartList[i]);
+    let cartProduct = cart.indexOf(cartList[i]); 
 
-    if(cartProduct === -1){
-      cart.push(cartList[i]);
-      cart[cart.length -1].quantity = 1;
-
+    if(cartProduct === -1){ //If the array is empty of items.
+      cart.push(cartList[i]); //Push the cartList itmes in.
+      cart[cart.length -1].quantity = 1; //if non-exist, the quantity is 1.
+      cart[cart.length -1].subtotal = cartList[i].price;
     }else{
-      cart[cartProduct].quantity++;
+      cart[cartProduct].quantity++; //Sum 1 to quantity if the item exist.
+      cart[cartProduct].subtotal += cartList[i].price;
     }
     
   }
-
   console.log(cart);
+  applyPromotionsCart()
+  calculateTotal()
 }
 
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+
+  for(j= 0; j < cart.length; j++){
+    if(cart[j].id === 1 && cart[j].quantity >= 3){
+      cart[cart.id == 1].price = 10;
+      
+    }
+    if(cart[j].id === 3 && cart[j].quantity >= 10){
+      (cart[cart.id ===3].price * 2) /3; 
+
+    }
+  }
+
 }
 
 // ** Nivell II **
@@ -151,6 +165,4 @@ function printCart() {
 
 function open_modal() {
   console.log("Open Modal");
-  console.log(generateCart());
-  
 }

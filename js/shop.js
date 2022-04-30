@@ -74,6 +74,8 @@ var cart = [];
 
 var total = 0;
 
+var totalDiscount = 0;
+
 // Exercise 1
 function buy(id) {
   
@@ -100,11 +102,11 @@ function calculateTotal() {
   for(i= 0; i < cartList.length; i++){
     total += (cartList[i].price);
   }
-  console.log(total);
+  console.log(total, "sin descuento");
 }
 
 // Exercise 4
-function generateCart() {
+function generateCart() { //It works clicking on the cart button.
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
@@ -124,6 +126,7 @@ function generateCart() {
   console.log(cart);
   applyPromotionsCart()
   calculateTotal()
+  printCart()
 }
 
 // Exercise 5
@@ -132,15 +135,20 @@ function applyPromotionsCart() {
 
   for(j= 0; j < cart.length; j++){
     if(cart[j].id === 1 && cart[j].quantity >= 3){
-      cart[cart.id == 1].price = 10;
-      
+      cart[j].subtotalDiscount = cart[j].quantity * 10;
+      total = cart[j].subtotalDiscount;
     }
     if(cart[j].id === 3 && cart[j].quantity >= 10){
-      (cart[cart.id ===3].price * 2) /3; 
-
+      let priceDiscount = (cart[j].price * 2) / 3;
+      cart[j].subtotalDiscount = priceDiscount * cart[j].quantity;
+      total = cart[j].subtotalDiscount;
     }
+    console.log(total, "precio con descuento");
   }
-
+  for(j= 0; j < cart.length; j++){
+    totalDiscount += (cart[j].subtotalDiscount);
+  }
+  console.log(totalDiscount, "precio total con descuento");
 }
 
 // ** Nivell II **
@@ -159,8 +167,14 @@ function removeFromCart(id) {
 }
 
 // Exercise 9
+const element = document.getElementById("element");
+
+
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
+  cart.map(product => (
+    element.innerHTML = product.name
+  ))
 }
 
 function open_modal() {

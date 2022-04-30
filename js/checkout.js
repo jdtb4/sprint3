@@ -18,7 +18,7 @@ var errorLastN = document.getElementById("errorLastN");
 function validate(event) {
   // Validate fields entered by the user: name, phone, password, and email
 
-  event.preventDefault(firstName);
+  event.preventDefault();
 
   //Validate First Name
   if(firstName.value.length < 3 || /\d+g/.test(firstName.value) == false){ // 3 Characters minimum and non numbers or special characters.
@@ -61,12 +61,16 @@ function validate(event) {
     errorPassword.classList.add("d-block");
     errorPassword.classList.add("invalid-feedback");
     password.classList.add("border-danger");
-  }
-  if(password.value.length >= 8 && /\w+g/.test(password.value) == true){
+  }else{
     errorPassword.classList.remove("d-block");
     password.classList.remove("border-danger");
     password.classList.add("border-success");
   }
+  /*if(password.value.length >= 8 && /\w+g/.test(password.value) == true){
+    errorPassword.classList.remove("d-block");
+    password.classList.remove("border-danger");
+    password.classList.add("border-success");
+  }*/
 
   //Validate Address.
   if(address.value.length < 3){
@@ -85,10 +89,14 @@ function validate(event) {
     errorPhone.classList.add('d-block');
     errorPhone.classList.add('invalid-feedback');
     phone.classList.add('border-danger');
-  }
-  if(phone.value.length >= 9 && /[A-Za-z]+g/.test(phone.value) == true){ //Hide warning.
+  }else{
     errorPhone.classList.remove('d-block');
     phone.classList.remove('border-danger');
     phone.classList.add("border-success");
   }
+  /*if(phone.value.length >= 9 && /[A-Za-z]+g/.test(phone.value) == true){ //Hide warning.
+    errorPhone.classList.remove('d-block');
+    phone.classList.remove('border-danger');
+    phone.classList.add("border-success");
+  }*/
 }
